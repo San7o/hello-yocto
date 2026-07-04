@@ -1,4 +1,6 @@
-# yocto-project
+# hello-yocto
+
+Sample yocto project.
 
 ## Quickstart
 
