@@ -1,6 +1,16 @@
 # hello-yocto
 
-Sample yocto project.
+Yocto is a collection of tools and configurations for building Linux images.
+
+The goal of yocto is to build a full Linux distribution tailored to a specific
+target and/or usecase. This includes the toolchain, bootloader, kernel and
+filesystem image. Keep in mind that Yocto is not a particular tool, it is more
+of an umbrella project under the Linux Foundation. It uses the "OpenEmbedded"
+framework which provides tools and configurations to build Linux, the build
+system is called BitBake, and the reference base distribution you start with is
+called "poky".
+
+This repo is a small example of how to structure and use a yocto-based project.
 
 ## Quickstart
 
