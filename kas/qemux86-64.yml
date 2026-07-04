@@ -1,0 +1,41 @@
+# Kas config
+# ==========
+
+header:
+  version: 14
+
+# Target hardware specification
+machine: qemux86-64
+distro: poky
+target:
+  - core-image-minimal
+
+# Layers and Repository orchestration
+repos:
+  # Base Poky framework
+  poky:
+    url: "https://git.yoctoproject.org/poky"
+    refspec: "scarthgap"
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+
+  # Local custom layers
+  # The path is relative to where you run the 'kas' command (project root)
+  meta-dummy:
+    path: meta-dummy
+
+# Base Configuration & Fragment integration
+local_conf_header:
+  wrynose-base: |
+    CONF_VERSION = "2"
+    PACKAGE_CLASSES = "package_deb"
+
+  root-login-with-empty-password: |
+    EXTRA_IMAGE_FEATURES:append = " debug-tweaks"
+    INHERIT += "extrausers"
+    EXTRA_USERS_PARAMS = "usermod -p '' root;"
+
+  sstate-mirror-cdn: |
+    SSTATE_MIRRORS = "file://.* http://cdn.yoctoproject.org/sstate/PATH;downloadfilename=PATH"

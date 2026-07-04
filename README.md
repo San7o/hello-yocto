@@ -4,6 +4,8 @@ Sample yocto project.
 
 ## Quickstart
 
+### Using Bitbake
+
 Setup:
 
 ```bash
@@ -20,6 +22,26 @@ Run the image:
 
 ```bash
 runqemu snapshot nographic slirp
+```
+
+Generate the SDK:
+
+```bash
+bitbake core-image-minimal -c populate_sdk
+```
+
+### Using Kas
+
+Build:
+
+```bash
+kas build kas/qemux86-64.yml
+```
+
+Generate the SDK:
+
+```bash
+kas build kas/qemux86-64.yml -c populate_sdk
 ```
 
 ## Layers
