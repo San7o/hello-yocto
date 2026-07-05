@@ -2,7 +2,7 @@
 # ==========
 
 header:
-  version: 14
+  version: 21
 
 # Target hardware specification
 machine: qemux86-64
@@ -12,14 +12,26 @@ target:
 
 # Layers and Repository orchestration
 repos:
-  # Base Poky framework
-  poky:
-    url: "https://git.yoctoproject.org/poky"
-    refspec: "scarthgap"
+  # Base OpenEmbedded metadata layer
+  openembedded-core:
+    url: "https://git.openembedded.org/openembedded-core"
+    branch: "wrynose"
     layers:
       meta:
-      meta-poky:
+
+  # Standalone BitBake execution engine
+  bitbake:
+    url: "https://git.openembedded.org/bitbake"
+    branch: "2.18"
+    layers: {}
+
+  # Yocto configurations and BSP reference layers
+  meta-yocto:
+    url: "https://git.yoctoproject.org/meta-yocto"
+    branch: "wrynose"
+    layers:
       meta-yocto-bsp:
+      meta-poky:
 
   # Local custom layers
   # The path is relative to where you run the 'kas' command (project root)
@@ -33,9 +45,11 @@ local_conf_header:
     PACKAGE_CLASSES = "package_deb"
 
   root-login-with-empty-password: |
-    EXTRA_IMAGE_FEATURES:append = " debug-tweaks"
-    INHERIT += "extrausers"
-    EXTRA_USERS_PARAMS = "usermod -p '' root;"
+    EXTRA_IMAGE_FEATURES += " empty-root-password \
+                              allow-empty-password \
+                              allow-root-login"
+    #INHERIT += "extrausers"
+    #EXTRA_USERS_PARAMS = "usermod -p '' root;"
 
   sstate-mirror-cdn: |
     SSTATE_MIRRORS = "file://.* http://cdn.yoctoproject.org/sstate/PATH;downloadfilename=PATH"

@@ -1,7 +1,6 @@
 TODO
 ====
 
-- add kas support
 - compile custom kernel config
 - compile custom device tree
 - compile custom userspace package

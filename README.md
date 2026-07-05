@@ -42,10 +42,29 @@ bitbake core-image-minimal -c populate_sdk
 
 ### Using Kas
 
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
 Build:
 
 ```bash
 kas build kas/qemux86-64.yml
+```
+
+You can also use `kas-conainer` to use a Docker container for the toolchain:
+
+```bash
+kas-container build kas/qemux86-64.yml
+```
+
+Run the image:
+
+```bash
+kas shell kas/qemux86-64.yml
+runqemu snapshot nographic slirp
 ```
 
 Generate the SDK:
@@ -156,4 +175,10 @@ Enable debug messages:
 
 ```bash
 bitbake -DDD <package>
+```
+
+When a build broke and it fails to compile the next time:
+
+```bash
+kas build --target binutils -c cleansstate kas/qemux86-64.yml
 ```

@@ -1,1 +1,7 @@
 *-builds
+*.log
+*_history
+build
+.venv
+openembedded-core
+meta-yocto
