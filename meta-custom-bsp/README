@@ -1,0 +1,4 @@
+meta-custom-bsp
+===============
+
+This layer configure a custom device tree for the build.

@@ -5,7 +5,7 @@ header:
   version: 21
 
 # Target hardware specification
-machine: qemux86-64
+machine: qemuarm64
 distro: poky
 target:
   - core-image-minimal
@@ -40,6 +40,9 @@ repos:
 
   meta-dev-custom:
     path: meta-dev-custom
+
+  meta-custom-bsp:
+    path: meta-custom-bsp
 
 # Base Configuration & Fragment integration
 local_conf_header:

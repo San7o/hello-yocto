@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/; /* Identifies this file as a runtime overlay */
+
+/ {
+    fragment@0 {
+        /* We target the root of the existing base device tree */
+        target-path = "/"; 
+        
+        __overlay__ {
+            /* We inject our dummy test LED */
+            my_test_led {
+                compatible = "gpio-leds";
+                status = "okay";
+                
+                debug_led {
+                    label = "debug:green";
+                    default-state = "keep";
+                };
+            };
+        };
+    };
+};
