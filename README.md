@@ -181,4 +181,6 @@ When a build broke and it fails to compile the next time:
 
 ```bash
 kas build --target binutils -c cleansstate kas/qemux86-64.yml
+# or
+kas shell kas/qemux86-64.yml -c "bitbake linux-yocto -c cleansstate"
 ```

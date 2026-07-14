@@ -1,6 +1,6 @@
 TODO
 ====
 
-- compile custom kernel config
 - compile custom device tree
 - compile custom userspace package
+- read this: https://docs.yoctoproject.org/bsp-guide/bsp.html

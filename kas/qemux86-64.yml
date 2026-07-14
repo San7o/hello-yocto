@@ -35,8 +35,11 @@ repos:
 
   # Local custom layers
   # The path is relative to where you run the 'kas' command (project root)
-  meta-dummy:
-    path: meta-dummy
+  # meta-dummy:
+  #   path: meta-dummy
+
+  meta-dev-custom:
+    path: meta-dev-custom
 
 # Base Configuration & Fragment integration
 local_conf_header:
